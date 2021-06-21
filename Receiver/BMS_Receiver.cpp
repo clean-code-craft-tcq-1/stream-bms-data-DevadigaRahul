@@ -118,12 +118,11 @@ void BMS_Receiver::calculate_moving_average()
 
 void BMS_Receiver::print_data()
 {
-	cout << "---Performance statistics---\n";
-	cout << "----------------------------\n";
-	cout << "Min Temperature: " << stat.min_Temperature << "\n";
-	cout << "Max Temperature: " << stat.max_Temperature << "\n";
-	cout << "Min SOC: " << stat.min_SOC << "\n";
-	cout << "Max SOC: " << stat.max_SOC << "\n";
+
+	cout << "Minimum Temperature: " << stat.min_Temperature << "\n";
+	cout << "Maximum Temperature: " << stat.max_Temperature << "\n";
+	cout << "Minimum SOC: " << stat.min_SOC << "\n";
+	cout << "Maximum SOC: " << stat.max_SOC << "\n";
 	cout << "Moving Average Temperature: " << stat.average_Temperature << "\n";
 	cout << "Moving Average SOC: " << stat.average_SOC << "\n\n";
 
