@@ -39,13 +39,3 @@ jobs:
       - name: production code run
         run: Sender/Sender.py | ./Receiver
       
-      - name:  Run and collect coverage
-        run: |
-          coverage run --branch Sender/Sender.py
-          coverage html
-      - name: Upload coverage
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage
-          path: ./htmlcov
-          retention-days: 1
