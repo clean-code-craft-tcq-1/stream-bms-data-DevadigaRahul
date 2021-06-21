@@ -37,5 +37,5 @@ jobs:
         run: g++ -Wall -Wextra -o Receiver ./Receiver/BMS_operation_manager.cpp ./Receiver/BMS_Receiver.cpp ./Receiver/BMS_Receiver_main.cpp 
       
       - name: production code run
-        run: ./Sender/Sender.py | ./Receiver
+        run: python Sender/Sender.py | ./Receiver
       
