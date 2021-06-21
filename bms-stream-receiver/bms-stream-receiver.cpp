@@ -28,7 +28,6 @@
             std::stringstream(strCommaDelimit[i].substr(ipos)) >> tempNum;
             streamParamVec[i] = tempNum;
         }
-        else std::cout << "No number found\n";
     }
 
 }
