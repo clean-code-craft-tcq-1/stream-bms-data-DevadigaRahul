@@ -33,7 +33,7 @@ jobs:
           # exit-zero treats all errors as warnings.
           flake8 . --count --exit-zero --max-line-length=80 --ignore=E111,E121,E126 --statistics
           - name: build for Receiver
-           run: g++ -Wall -Wextra -o Receiver ./BMS_Reciever/BMS_operation_manager.cpp ./BMS_Reciever/BMS_Receiver.cpp ./BMS_Reciever/BMS_Receiver_main.cpp 
+           run: g++ -Wall -Wextra -o Receiver ./Reciever/BMS_operation_manager.cpp ./Reciever/BMS_Receiver.cpp ./Reciever/BMS_Receiver_main.cpp 
       
       - name:  Run and collect coverage
         run: |
