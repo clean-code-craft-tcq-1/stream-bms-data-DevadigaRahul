@@ -17,23 +17,23 @@ TEST_CASE("Test Stream Parser : Extracted data ") {
 
 TEST_CASE("Test Stream Parser  : Test Line number ") {
 
-	InputStreamParser parserObj;
+	InputStreamParser parserObjTest;
 	std::vector<float> paramVec;
 	std::string line1 = "{ 'temp' : 1.1 , 'soc' : 2.2 } ";
 	std::string line2 = "{ 'temp' : 3.3 , 'soc' : 4.4 } ";
-	parserObj.parseStreamInputLine(line1);
-	parserObj.parseStreamInputLine(line2);
-	REQUIRE(parserObj.getLineNum() == 2);
+	parserObjTest.parseStreamInputLine(line1);
+	parserObjTest.parseStreamInputLine(line2);
+	REQUIRE(parserObjTest.getLineNum() == 2);
 }
 
 TEST_CASE("Test Stream Processor  : Test value Min ") {
 
 	BMSDataStreamReceiver bmsStreamRxObj;
 	std::vector<float> outVec;
-	std::string line1 = "{ 'temp' : 1.1 , 'soc' : 2.2 } ";
-	std::string line2 = "{ 'temp' : 3.3 , 'soc' : 4.4 } ";
-	bmsStreamRxObj.processInputDataStream(line1);
-	bmsStreamRxObj.processInputDataStream(line2);
+	std::string lineNum1 = "{ 'temp' : 1.1 , 'soc' : 2.2 } ";
+	std::string lineNum2 = "{ 'temp' : 3.3 , 'soc' : 4.4 } ";
+	bmsStreamRxObj.processInputDataStream(lineNum1);
+	bmsStreamRxObj.processInputDataStream(lineNum2);
 	outVec = bmsStreamRxObj.getStreamMinofParams();
 	REQUIRE(outVec[0]== 1.1f);
 	REQUIRE(outVec[1] == 2.2f);
@@ -41,13 +41,13 @@ TEST_CASE("Test Stream Processor  : Test value Min ") {
 
 TEST_CASE("Test Stream Processor  : Test value Max ") {
 
-	BMSDataStreamReceiver bmsStreamRxObj;
+	BMSDataStreamReceiver bmsStreamRxObjTest;
 	std::vector<float> outVec;
-	std::string line1 = "{ 'temp' : 1.1 , 'soc' : 2.2 } ";
-	std::string line2 = "{ 'temp' : 3.3 , 'soc' : 4.4 } ";
-	bmsStreamRxObj.processInputDataStream(line1);
-	bmsStreamRxObj.processInputDataStream(line2);
-	outVec = bmsStreamRxObj.getStreamMaxofParams();
+	std::string lineNum1 = "{ 'temp' : 1.1 , 'soc' : 2.2 } ";
+	std::string lineNum2 = "{ 'temp' : 3.3 , 'soc' : 4.4 } ";
+	bmsStreamRxObjTest.processInputDataStream(lineNum1);
+	bmsStreamRxObjTest.processInputDataStream(lineNum2);
+	outVec = bmsStreamRxObjTest.getStreamMaxofParams();
 	REQUIRE(outVec[0] == 3.3f);
 	REQUIRE(outVec[1] == 4.4f);
 }

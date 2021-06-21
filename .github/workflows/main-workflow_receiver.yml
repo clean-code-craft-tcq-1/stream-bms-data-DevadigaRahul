@@ -1,4 +1,4 @@
-name: Build and Run
+name: Build and Run Receiver
 
 on: [push, pull_request]
 
@@ -18,9 +18,6 @@ jobs:
       
     - name: build
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o receiver-test test/*.cpp bms-stream-receiver/bms-stream-receiver.cpp
-      
-    - name: run
-      run: ./receiver
 
     - name: run
       run: ./receiver-test 
