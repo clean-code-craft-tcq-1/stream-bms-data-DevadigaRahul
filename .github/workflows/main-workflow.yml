@@ -9,6 +9,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      
       - uses: actions/setup-python@v2
         with:
           python-version: '3.9'
@@ -17,8 +19,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Install boost
-      run: sudo apt-get install libboost-thread-dev
           
       - name: Lint with flake8
         run: |
@@ -26,7 +26,8 @@ jobs:
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           # exit-zero treats all errors as warnings.
           flake8 . --count --exit-zero --max-line-length=80 --ignore=E111,E121,E126 --statistics
-      - name: Run and collect coverage
+   
+      - name:  Run and collect coverage
         run: |
           coverage run --branch Sender/Sender.test.py
           coverage html
