@@ -14,8 +14,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y gcovr
         
-      - name: Install boost
-        run: sudo apt-get install libboost-thread-dev
+
       
       - uses: actions/setup-python@v2
         with:
@@ -32,9 +31,12 @@ jobs:
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           # exit-zero treats all errors as warnings.
           flake8 . --count --exit-zero --max-line-length=80 --ignore=E111,E121,E126 --statistics
+        
+          - name: Install boost
+          run: sudo apt-get install libboost-thread-dev
           
       - name: build for Receiver
-        run: g++ -Wall -Wextra -o Receiver ./Receiver/*.c*
+        run: g++ -Wall -Wextra -o Receiver ./Receiver/BMS_Receiver.cpp ./Receiver/BMS_Receiver_main.cpp
       
       - name: production code run
         run: python Sender/Sender.py | ./Receiver
