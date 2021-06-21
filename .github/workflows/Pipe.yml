@@ -37,8 +37,8 @@ jobs:
         run: sudo apt-get install libboost-thread-dev
           
       - name: build for Receiver
-        run: g++ -Wall -Wextra -o Receiver ./Receiver/BMS_Receiver.cpp ./Receiver/BMS_Receiver_main.cpp
+        run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o Receiver ./Receiver/BMS_Receiver.cpp ./Receiver/BMS_Receiver_main.cpp
       
       - name: production code run
-        run: python Sender/Sender.py | ./Receiver
+        run: python ./Sender/Sender.py | ./Receiver
       
