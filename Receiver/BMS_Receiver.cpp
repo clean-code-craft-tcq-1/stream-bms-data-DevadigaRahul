@@ -6,10 +6,6 @@
 using boost::property_tree::ptree;
 
 
-vector<Parameters>& BMS_Receiver::get_parameter_list()
-{
-	return parameter_list;
-}
 
 void BMS_Receiver::get_data_from_console()
 {
@@ -43,6 +39,14 @@ BMS_Receiver BMS_Receiver::get_operation_instance()
 {
 	BMS_Receiver obj;
 	return obj;
+}
+vector<Parameters>& BMS_Receiver::get_parameter_list()
+{
+	return parameter_list;
+}
+Parameter_data BMS_Receiver::get_statitics()
+{
+	return stat;
 }
 
 bool BMS_Receiver::parse_data(string data, Parameters &parameter)
@@ -136,7 +140,3 @@ void BMS_Receiver::perform_operation(vector<Parameters> parameter_list)
 
 }
 
-Parameter_data BMS_Receiver::get_statitics()
-{
-	return stat;
-}
