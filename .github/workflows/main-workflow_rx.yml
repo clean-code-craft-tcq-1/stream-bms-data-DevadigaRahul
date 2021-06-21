@@ -20,10 +20,10 @@ jobs:
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o receiver-test test/*.cpp bms-stream-receiver/bms-stream-receiver.cpp
       
     - name: run
-      run: ./sender
+      run: ./receiver
 
     - name: run
-      run: ./sender-test 
+      run: ./receiver-test 
 
     - name: collect coverage
       run: gcovr --gcov-exclude=".*test.*" -r . --html --html-details -o coverage.html
