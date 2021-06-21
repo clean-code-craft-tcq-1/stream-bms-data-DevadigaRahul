@@ -9,7 +9,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      - name: install coverage tool
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcovr
+        
+      - name: Install boost
+        run: sudo apt-get install libboost-thread-dev
       
       - uses: actions/setup-python@v2
         with:
