@@ -1,0 +1,29 @@
+name: Build receiver
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: install coverage tool
+      run: sudo apt-get install -y gcovr
+    - name: Install boost
+      run: sudo apt-get install libboost-thread-dev
+    - name: build
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o receiver_exe ./Receiver/*.c*
+      
+
+    - name: collect coverage
+      run: gcovr --gcov-exclude=".*test.*" -r . --html --html-details -o coverage.html
+
+    - name: create coverage artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage
+        path: ./*.html
+        retention-days: 1
